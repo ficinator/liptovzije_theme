@@ -1,0 +1,144 @@
+# Copyright (C) 2014 the WordPress team
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Liptov Zije 1.0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.7.4\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Language: sk_SK\n"
+
+msgid "Main Menu"
+msgstr "Hlavné menu"
+
+msgid "Menu and Widgets"
+msgstr "Menu a widžety"
+
+msgid "Search"
+msgstr "Hľadať"
+
+msgid "Search for:"
+msgstr "Vyhľadať"
+
+msgid "Search Results for \"%s\""
+msgstr "Výsledky vyhľadávania pre \"%s\""
+
+msgid "Sidebar"
+msgstr "Sajdbár"
+
+msgid "Toggle Sidebar"
+msgstr "Skryť / zobraziť sajdbár"
+
+msgid "Telephone"
+msgstr "Telefón"
+
+msgid "landline"
+msgstr "Pevná linka"
+
+msgid "mobile"
+msgstr "Mobil"
+
+msgid "Address"
+msgstr "Adresa"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Contact"
+msgstr "Kontakt"
+
+msgid "Coordinates"
+msgstr "Súradnice"
+
+msgid "Previous and Next Posts"
+msgstr "Predchádzajúce a nasledujúce články"
+
+msgid "Next"
+msgstr "Nasledujúca"
+
+msgid "Next Page"
+msgstr "Nasledujúca strana"
+
+msgid "Previous"
+msgstr "Predchádzajúca"
+
+msgid "Previous Page"
+msgstr "Predchádzajúca strana"
+
+msgid "Read More"
+msgstr "Čítať viac"
+
+msgid "Continue reading%s"
+msgstr "Pokračovať v čítaní%s"
+
+msgid "Edit"
+msgstr "Upraviť"
+
+msgid "Show Details"
+msgstr "Zobraziť viac"
+
+msgid "Hide"
+msgstr "Skryť"
+
+msgid "Nothing Found"
+msgstr "Hľadaný obsah sa nenašiel, skúste to prosím znova."
+
+msgid "404"
+msgstr "Tu zdochol pes."
+
+msgid "Photo of the Week"
+msgstr "Fotka týždňa"
+
+msgid "Golden Apple Cinema Photo of the Week"
+msgstr "Golden Apple Cinema Fotka týždňa"
+
+msgid "Find us on Facebook"
+msgstr "Nájdete nás na Facebooku"
+
+msgid "Share This"
+msgstr "Zdieľaj tento článok"
+
+msgid "Partners"
+msgstr "Partneri"
+
+msgid "Show Map"
+msgstr "Zobraziť mapu"
+
+msgid "Hide Map"
+msgstr "Skryť mapu"
+
+msgid "Radio Liptov"
+msgstr "Rádio Liptov"
+
+msgid "Play/Pause"
+msgstr "Prehrať/Pozastaviť"
+
+msgid "Mute"
+msgstr "Stíšiť"
+
+msgid "No Events"
+msgstr "Žiadne udalosti"
+
+msgid "If the stream doesn't work, click here."
+msgstr "Ak stream nefunguje, kliknite sem."
+
+msgid "All Events on %s"
+msgstr "Všetky udalosti dňa %s"
+
+msgid "Golden Apple Cinema Weekly Schedule"
+msgstr "Týždenný program Golden Apple Cinema Liptovský Mikuláš"
+
+msgid "New schedule from Thursday %s to Wednesday %s will be available on Monday %s"
+msgstr "Nový program platný od štvrtku %s do stredy %s bude k dispozícií od pondelka %s"
+
+msgid "For reservations and more information, visit "
+msgstr "Pre rezervácie a viac informácií navštívte "
+
+msgid "Movie"
+msgstr "Film"
