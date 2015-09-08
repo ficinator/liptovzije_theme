@@ -961,7 +961,9 @@ input[type=submit] {
  */
 
 @imageSize:			60px;
-@radioLogoWidth:	178px;
+// @radioLogoWidth:	178px;
+@radioLogoHeight:	100px;
+@radioLogoHeightMedium:	56px;
 @volumeWidth:		96px;
 @volumeWidthMedium:	68px;
 
@@ -1008,8 +1010,9 @@ input[type=submit] {
 				}
 			}
 		}
-		.widget.radio-liptov-stream {
-			text-align: center;
+		.widget.radio-liptov-stream,
+		.widget.radio-pre-zivot-stream {
+			width: 100%;
 			.radio-logo {
 				display: block;
 				margin: 0 auto;
@@ -1017,10 +1020,11 @@ input[type=submit] {
 				.Transition(background-color);
 				img {
 					display: block;
-					width: @radioLogoWidth;
+					// width: @radioLogoWidth;
+					height: @radioLogoHeight;
 					margin: 0 auto;
 					@media screen and (min-width: @screenMedium1) {
-						width: @thumbnailSize;
+						height: @radioLogoHeightMedium;
 					}
 				}
 				&:hover {
@@ -1031,9 +1035,28 @@ input[type=submit] {
 					vertical-align: middle;
 					//margin: @medium;
 				}
-			}
+			}	// .radio-logo
 			.radio-container {
 				vertical-align: middle;
+				@media screen and (min-width: @screenMedium1) {
+					display: table-cell;
+				}
+				.note {
+					display: block;
+					color: @textSecondary;
+					text-decoration: none;
+					margin: 0 @medium;
+					&:hover {
+						color: @dark;
+					}
+				}	// ,note
+			}	// .radio-container
+			@media screen and (min-width: @screenMedium1) {
+				display: table;
+			}
+		}	// .widget.radio-liptov-stream, .widget.radio-pre-zivot-stream
+		.widget.radio-liptov-stream {
+			.radio-container {
 				button {
 					display: inline-block;
 					vertical-align: middle;
@@ -1101,24 +1124,13 @@ input[type=submit] {
 						width: @volumeWidthMedium;
 					}
 				}	// #volume
-				@media screen and (min-width: @screenMedium1) {
-					display: table-cell;
-				}
-				.note {
-					display: block;
-					text-align: left;
-					color: @textSecondary;
-					text-decoration: none;
-					margin: 0 @medium;
-					&:hover {
-						color: @dark;
-					}
-				}
 			}	// .radio-container
-			@media screen and (min-width: @screenMedium1) {
-				display: table;
-			}
 		}	// .widget.radio-liptov-stream
+		.widget.radio-pre-zivot-stream {
+			embed {
+				margin: 0 @medium;
+			}
+		}
 		.widget.facebook {
 			.widget-title:before {
 				.Fa('\f230');

@@ -516,7 +516,7 @@ function get_og_meta() {
 	return $og_meta;
 }
 
-function radioL() {
+function radio_l() {
 	$url = 'http://www.radioliptov.sk/index.php';
 	$stream_url = 'http://95.105.254.157:80/radioliptov';
 	$stream_url2 = 'http://www.radioliptov.sk/stream.m3u';
@@ -526,7 +526,7 @@ function radioL() {
 	echo '<img src="' . get_template_directory_uri() . '/images/radio_liptov.png" alt="' . __('Radio Liptov', 'liptovzije') . '" />';
 	echo '</a>';
 	echo '<div class="radio-container">';
-	echo '<audio id="radio-stream" preload="none">'; 
+	echo '<audio id="radio-l-stream" preload="none">'; 
 	echo '<source src="' . $stream_url . '">';
 	echo '<p>' . __('Your browser doesn\'t support HTML audio. Sorry.') . '</p>';
 	echo '</audio>';
@@ -536,6 +536,22 @@ function radioL() {
 	echo '<a href="' . $stream_url2 . '" target="_blank" class="note">' . __('If the stream doesn\'t work, click here.', 'liptovzije') . '</a>';
 	echo '</div>';		// .radio-container
 	echo '</aside>';	// .widget.radio-liptov-stream
+}
+
+function radio_pre_zivot() {
+	$url = 'http://radioprezivot.sk/';
+	$stream_url = 'http://www.internetoveradio.sk/radioplayer.swf';
+
+	echo '<aside class="widget radio-pre-zivot-stream">';
+	echo '<a href="' . $url . '" target="_blank" class="radio-logo">';
+	echo '<img src="' . get_template_directory_uri() . '/images/radio_pre_zivot.png" alt="' . __('Rádio pre Život', 'liptovzije') . '" />';
+	echo '</a>';
+	echo '<div class="radio-container">';
+	echo '<h3 class="widget-title"><a href="' . $url . '" target="_blank">' . __('Rádio pre Život') . '</a></h3>';
+	echo '<embed type="application/x-shockwave-flash" src="' . $stream_url . '" id="radio-pre-zivot-stream" quality="high" allowfullscreen="false" allowscriptaccess="always" flashvars="file=http://server1.internetoveradio.sk:8824/;stream.nsv&amp;type=mp3&amp;volume=60" width="192px" height="20">';
+	echo '<a href="' . $url . '" target="_blank" class="note">' . __('If the stream doesn\'t work, click here.', 'liptovzije') . '</a>';
+	echo '</div>';		// .radio-container
+	echo '</aside>';	// .widget.radio-liptov-stream	
 }
 
 function get_ads() {

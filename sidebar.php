@@ -9,7 +9,8 @@
 			<?php
 				if (!has_category('photo-of-the-week') || is_home())
 					the_photo_of_the_week();
-				radioL();
+				radio_l();
+				radio_pre_zivot();
 				dynamic_sidebar('sidebar');
 			?>
 
