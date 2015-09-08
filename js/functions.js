@@ -16,7 +16,7 @@
 	$screenBigger	= 1200;
 	$screenHuge		= 1720;
 
-	$player = $('#radio-stream')[0];
+	$player = $('#radio-l-stream')[0];
 	$volume = 0.5;
 
 	$('.main-menu-toggle').click(function() {
@@ -85,11 +85,12 @@
 			$('.main-menu-container, .menu-bar .search-form, #sidebar').hide();
 			$('.sub-menu').show();
 			$('.menu-item-has-children').unbind('mouseenter mouseleave');
-			$('.menu-bar-container, #sidebar, #primary .entry-header .stripe').hcSticky('off');
+			$('.menu-bar-container, #ga-ads, #sidebar, #primary .entry-header .stripe').hcSticky('off');
 		}
 	})
 	.register('screen and (min-width: ' + ($screenSmaller + 1) + 'px) and (max-width: ' + $screenHuge + 'px)', {
 		match: function() {
+			$('#ga-ads').hcSticky({ top: 50 });
 			$('#sidebar').hcSticky({ top: 50 });
 			$('#primary .entry-header .stripe').hcSticky({
 				stickTo: '#primary',
@@ -102,6 +103,7 @@
 	})
 	.register('screen and (min-width: ' + ($screenHuge + 1) + 'px)', {
 		match: function() {
+			$('#ga-ads').hcSticky({ top: 60 });
 			$('#sidebar').hcSticky({ top: 60 });
 			$('#primary .entry-header .stripe').hcSticky({
 				stickTo: '#primary',
