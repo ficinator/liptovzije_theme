@@ -564,9 +564,11 @@ function parse_ga_movies() {
 		}
 		$date = strtotime($date);
 		if (!array_key_exists($date, $movies[$title]['dates'])) {
-			$movies[$title]['dates'][$date] = array();
+			$movies[$title]['dates'][$date] = array(
+				'times' => array()
+			);
 		}
-		$movies[$title]['dates'][$date][$time] = array(
+		$movies[$title]['dates'][$date]['times'][$time] = array(
 			'id'	=> $id,
 			'room'	=> $room
 		);

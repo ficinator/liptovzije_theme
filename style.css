@@ -2826,10 +2826,7 @@ input[type=submit] {
   margin: 10px 20px 10px 20px;
 }
 #schedule {
-  margin-bottom: 30px;
-}
-#schedule p {
-  margin: 20px;
+  margin-bottom: 10px;
 }
 #schedule .day-tabs li {
   display: inline-block;
@@ -2852,34 +2849,101 @@ input[type=submit] {
 #schedule .day-tabs li.ui-tabs-active a:hover {
   color: #ffffff;
 }
-#schedule .day-schedule {
+#info p {
+  margin: 20px;
+}
+#movie-list > ul > li {
+  margin-bottom: 10px;
+  background: #ffffff;
+  border: 1px solid #bfbfbf;
+}
+#movie-list > ul > li h3 {
+  color: #ffffff;
+  background: #e14d43;
+  padding: 6px 10px;
+}
+.day-schedule,
+.movie-schedule {
   overflow-y: auto;
 }
-#schedule .day-schedule table {
+.day-schedule table,
+.movie-schedule table {
   border-collapse: collapse;
   width: 100%;
   border-bottom: 1px solid #bfbfbf;
 }
-#schedule .day-schedule table th,
-#schedule .day-schedule table td {
+.day-schedule table th,
+.movie-schedule table th,
+.day-schedule table td,
+.movie-schedule table td {
   padding: 6px 10px;
   border-left: 1px solid #bfbfbf;
   border-right: 1px solid #bfbfbf;
+  text-align: center;
 }
-#schedule .day-schedule table thead th {
-  color: #ffffff;
-  background: #e14d43;
-  border: solid #ba281e;
+.day-schedule table thead th,
+.movie-schedule table thead th {
   border-width: 0 1px;
+  border-style: solid;
 }
-#schedule .day-schedule table tbody tr:nth-child(2n+1) {
-  background: #ffffff;
+.day-schedule table tbody tr th,
+.movie-schedule table tbody tr th,
+.day-schedule table tbody tr td,
+.movie-schedule table tbody tr td {
+  border-bottom: 1px solid #bfbfbf;
 }
-#schedule .day-schedule .no-schedule {
+.day-schedule table tbody tr th,
+.movie-schedule table tbody tr th {
+  text-align: left;
+}
+.day-schedule .no-schedule,
+.movie-schedule .no-schedule {
   padding: 20px;
   text-align: center;
   color: #ffffff;
   background: #e14d43;
+}
+.day-schedule table thead th {
+  color: #ffffff;
+  background: #e14d43;
+  border-color: #ba281e;
+}
+.day-schedule table tbody tr:nth-child(2n) {
+  background: #f2f2f2;
+}
+.day-schedule table tbody tr:nth-child(2n+1) {
+  background: #ffffff;
+}
+.movie-schedule {
+  padding: 10px;
+}
+.movie-schedule h3 {
+  font-style: 110%;
+}
+.movie-schedule table {
+  table-layout: fixed;
+}
+.movie-schedule table thead th {
+  background: none;
+  border-color: transparent;
+  font-weight: normal;
+}
+.movie-schedule table tbody {
+  border: 1px solid #bfbfbf;
+}
+.movie-schedule table tbody tr:nth-child(2n) {
+  background: #e6e6e6;
+}
+.movie-schedule table tbody tr:nth-child(2n+1) {
+  background: #f2f2f2;
+}
+.movie-schedule table tbody tr td {
+  vertical-align: top;
+}
+.movie-schedule table tbody tr td .date {
+  text-align: left;
+  font-size: 12px;
+  color: rgba(51, 51, 51, 0.7);
 }
 .ads.left {
   width: 210px;

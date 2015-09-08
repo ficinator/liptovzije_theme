@@ -10,10 +10,7 @@
 <div id="primary" class="cinema">
 	<h2 class="page-title"><?php _e('Golden Apple Cinema Weekly Schedule', 'liptovzije') ?></h2>
 	<section id="schedule">
-		<p>
-			<?php _e('For reservations and more information, visit ', 'liptovzije') ?>
-			<a href="http://gacinema.sk/" target="_blank">gacinema.sk</a>.
-		</p>
+
 	<?php
 		$dates = parse_ga_schedule();
 
@@ -55,7 +52,7 @@
 				echo '</tr></thead><tbody>';
 				sort($movies);
 				foreach ($movies as $movie) {
-					echo '<tr><th>' . $movie . '</th>';
+					echo '<tr><th><a href="#' . esc_attr($movie) . '">' . $movie . '</a></th>';
 						foreach ($hours as $hour => $movies_in_hour) {
 							if (array_key_exists($movie, $movies_in_hour)) {
 								$details = $movies_in_hour[$movie];
@@ -83,38 +80,69 @@
 	
 	</section><!-- #schedule -->
 
-	<?php
-		//$movies = parse_ga_movies();
+	<section id="info">
+		<p>
+			<?php _e('For reservations and more information, visit ', 'liptovzije') ?>
+			<a href="http://gacinema.sk/" target="_blank">gacinema.sk</a>.
+		</p>
+	</section><!-- #info -->
 
-		// echo '<ul>';
-		// foreach ($movies as $title => $details) {
-		// 	echo '<li>';
-		// 	echo '<h3>' . $title . '</h3>';
-		// 	echo '<div class="movie-schedule"><table><thead><tr>';
-		// 	foreach ($details['dates'] as $date => $times) {
-		// 		echo '<th>' . $date . '</th>';
-		// 	}
-		// 	echo '</tr></thead><tbody>';
-		// 	// foreach ($movies as $title => $details) {
-		// 	// 	if (!array_key_exists($date, $details['dates']))
-		// 	// 		continue;
-		// 	// 	echo '<tr><th>' . $title . '</th>';
-		// 	// 	foreach ($hours as $hour => $movies_in_hour) {
-		// 	// 		if (array_key_exists($title, $movies_in_hour)) {
-		// 	// 			$movie = $movies_in_hour[$title];
-		// 	// 			echo '<td>' . $movie['time'] . '</td>';
-		// 	// 		}
-		// 	// 		else {
-		// 	// 			echo '<td></td>';
-		// 	// 		}
-		// 	// 	}
-		// 	// 	echo '</tr>';
-		// 	// }
-		// 	echo '</tbody></table></div>';	// .movie-schedule
-		// 	echo '</li>';
-		// }
-		// echo '</ul>';
+	<h2 class="page-title"><?php _e('Movie List', 'liptovzije') ?></h2>
+	<section id="movie-list">
+
+	<?php
+		$day_names = array('Monday',
+											 'Thursday',
+											 'Wednesday',
+											 'Thursday',
+											 'Friday',
+											 'Saturday',
+											 'Sunday');
+		$movies = parse_ga_movies();
+
+
+		echo '<ul>';
+		foreach ($movies as $title => $details) {
+			echo '<li id="' . esc_attr($title) . '">';
+			echo '<h3>' . $title . '</h3>';
+			echo '<div class="movie-schedule"><table><thead><tr>';
+			foreach ($day_names as $day_name) {
+				echo '<th>' . __($day_name) . '</th>';
+			}
+			echo '</tr></thead><tbody>';
+			$i = 0;
+			while (++$i) {
+				$date = key($details['dates']);
+				if ($i == 1) {
+					echo '<tr>';
+				}
+				echo '<td>';
+				if ($date && $i == date('N', $date)) {
+					echo '<div class="date">' . date('j. n.', $date) . '</div>';
+					// echo $date . ' ' . $i . ' ' . date('N', $date) . ' ' . date('j. n.', $date);
+					$day_details = current($details['dates']);
+					echo '<ul class="times">';
+				 	foreach ($day_details['times'] as $time => $time_details) {
+				 		echo  '<li>' . $time . '</li>';
+				 	}
+				 	echo '</ul>';
+					$day_details = next($details['dates']);
+				}
+				echo '</td>';
+				if ($i == 7) {
+					echo '</tr>';
+					$i = $day_details ? 0 : -1;
+				}
+			}
+			echo '</tbody></table></div>';	// .movie-schedule
+			echo '</li>';
+		}
+		echo '</ul>';
+
+		// var_dump($movies);
 	?>
+
+	</section><!-- #movie-list -->
 
 </div><!-- #primary -->
 
