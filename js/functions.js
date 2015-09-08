@@ -85,12 +85,12 @@
 			$('.main-menu-container, .menu-bar .search-form, #sidebar').hide();
 			$('.sub-menu').show();
 			$('.menu-item-has-children').unbind('mouseenter mouseleave');
-			$('.menu-bar-container, #ga-ads, #sidebar, #primary .entry-header .stripe').hcSticky('off');
+			$('.menu-bar-container, #sidebar, #primary .entry-header .stripe').hcSticky('off');
 		}
 	})
 	.register('screen and (min-width: ' + ($screenSmaller + 1) + 'px) and (max-width: ' + $screenHuge + 'px)', {
 		match: function() {
-			$('#ga-ads').hcSticky({ top: 50 });
+			// $('#ga-ads').hcSticky({ top: 50 });
 			$('#sidebar').hcSticky({ top: 50 });
 			$('#primary .entry-header .stripe').hcSticky({
 				stickTo: '#primary',
@@ -103,7 +103,7 @@
 	})
 	.register('screen and (min-width: ' + ($screenHuge + 1) + 'px)', {
 		match: function() {
-			$('#ga-ads').hcSticky({ top: 60 });
+			// $('#ga-ads').hcSticky({ top: 60 });
 			$('#sidebar').hcSticky({ top: 60 });
 			$('#primary .entry-header .stripe').hcSticky({
 				stickTo: '#primary',
