@@ -8,6 +8,10 @@
 
 (function($) {
 
+	function esc_jq(str) {
+		return str.replace(/([;&,\.\+\*\~':"\!\^$%@\[\]\(\)=>\|])/g, '\\$1');
+	}
+
 	$screenTiny		= 450;
 	$screenSmaller	= 600;
 	$screenSmall	= 720;
@@ -15,6 +19,7 @@
 	$screenBig		= 1044;
 	$screenBigger	= 1200;
 	$screenHuge		= 1720;
+	$topBarHeight = 50;
 
 	$player = $('#radio-l-stream')[0];
 	$volume = 0.5;
@@ -60,6 +65,13 @@
 
 	$('#schedule').tabs();
 
+	$('.day-schedule a').click(function(){
+    $('html, body').animate({
+        scrollTop: $(esc_jq($(this).attr('href'))).offset().top - $topBarHeight - 10
+    }, 500);
+    return false;
+	});
+
 	// responsive scripts
 	enquire
 	// .register('screen and (max-width: ' + $screenSmaller + 'px)', {
@@ -72,6 +84,7 @@
 	// })
 	.register('screen and (min-width: ' + ($screenSmaller + 1) + 'px)', {
 		match: function() {
+			$topBarHeight = 40;
 			$('.main-menu-container, .menu-bar .search-form, #sidebar').show();
 			$('.sub-menu').hide();
 			$('.menu-item-has-children').hover(function() {
@@ -90,11 +103,12 @@
 	})
 	.register('screen and (min-width: ' + ($screenSmaller + 1) + 'px) and (max-width: ' + $screenHuge + 'px)', {
 		match: function() {
+			$topBarHeight = 40;
 			// $('#ga-ads').hcSticky({ top: 50 });
-			$('#sidebar').hcSticky({ top: 50 });
+			$('#sidebar').hcSticky({ top: $topBarHeight + 10 });
 			$('#primary .entry-header .stripe').hcSticky({
 				stickTo: '#primary',
-				top: 40
+				top: $topBarHeight
 			});
 		},
 		unmatch: function() {
@@ -103,11 +117,12 @@
 	})
 	.register('screen and (min-width: ' + ($screenHuge + 1) + 'px)', {
 		match: function() {
-			// $('#ga-ads').hcSticky({ top: 60 });
-			$('#sidebar').hcSticky({ top: 60 });
+			$topBarHeight = 50;
+			// $('#ga-ads').hcSticky({ top: $topBarHeight });
+			$('#sidebar').hcSticky({ top: $topBarHeight + 10 });
 			$('#primary .entry-header .stripe').hcSticky({
 				stickTo: '#primary',
-				top: 50
+				top: $topBarHeight
 			});
 		},
 		unmatch: function() {

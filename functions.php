@@ -556,7 +556,7 @@ function radio_pre_zivot() {
 
 function get_ads() {
 	if (has_category('photo-of-the-week'))
-		get_the_ga_ads();
+		get_the_ga_ads('ads left');
 }
 
 function parse_ga_movies() {
@@ -624,7 +624,7 @@ function parse_ga_schedule() {
 	return $dates;
 }
 
-function get_the_ga_ads() {
+function get_the_ga_ads($classes = '') {
 	$url = 'http://gacinema.sk/';
 	$document = new DomDocument;
 	libxml_use_internal_errors(true);
@@ -635,14 +635,16 @@ function get_the_ga_ads() {
 	foreach ($e_ads->childNodes as $e_ad) {
 		// a
 		if ($e_ad->nodeName == 'a') {
-			$img = $e_ad->getElementsByTagName('img')->item(0);
-			$img->setAttribute('src', $url . $img->getAttribute('src'));
-			array_push($ads, $e_ad);
+			if ($img = $e_ad->getElementsByTagName('img')->item(0)) {
+				$img->setAttribute('src', $url . $img->getAttribute('src'));
+				array_push($ads, $e_ad);
+			}
 		}
 		else if ($e_ad->nodeName == 'object') {
-			$embed = $e_ad->getElementsByTagName('embed')->item(0);
-			$embed->setAttribute('src', $url . $embed->getAttribute('src'));
-			array_push($ads, $e_ad);
+			if ($embed = $e_ad->getElementsByTagName('embed')->item(0)) {
+				$embed->setAttribute('src', $url . $embed->getAttribute('src'));
+				array_push($ads, $e_ad);
+			}
 		}
 		// img
 		else if ($e_ad->nodeName == 'img') {
@@ -651,7 +653,7 @@ function get_the_ga_ads() {
 		}
     }
 
-	echo '<div id="ga-ads" class="ads left">';
+	echo '<div id="ga-ads" class="' . $classes . '">';
     foreach ($ads as $ad) {
     	echo $document->saveHTML($ad);
     }
@@ -660,4 +662,9 @@ function get_the_ga_ads() {
 	// echo $doc->saveHTML($node);
 }
 
-?>
+function movie_title($title) {
+	$fks_url = '#';
+	return str_replace('FKS', '<a href="' . $fks_url . '">FKS</a>', $title);
+}
+	
+?>	

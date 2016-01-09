@@ -4,7 +4,7 @@
 	 */
 	get_header();
 	get_sidebar();
-	get_the_ga_ads();
+	// get_the_ga_ads();
 ?>
 
 <div id="primary" class="cinema">
@@ -33,10 +33,10 @@
 		for ($i = 0; $i < 7; $i++) {
 		//foreach ($dates as $date => $hours) {
 			$date = date('d.m.Y', time() + $i * 86400);
-			$hours = $dates[$date];
 			// echo $date . ' - ' . key($dates) . '<br />';
 			echo '<div id="day-' . $i . '" class="day-schedule">';
-			if ($hours) {
+			if (array_key_exists($date, $dates)) {
+				$hours = $dates[$date];
 				ksort($hours);
 				$movies = array();
 				echo '<table><thead><tr>';
@@ -52,7 +52,7 @@
 				echo '</tr></thead><tbody>';
 				sort($movies);
 				foreach ($movies as $movie) {
-					echo '<tr><th><a href="#' . esc_attr($movie) . '">' . $movie . '</a></th>';
+					echo '<tr><th><a href="#' . urlencode($movie) . '">' . $movie . '</a></th>';
 						foreach ($hours as $hour => $movies_in_hour) {
 							if (array_key_exists($movie, $movies_in_hour)) {
 								$details = $movies_in_hour[$movie];
@@ -81,30 +81,27 @@
 	</section><!-- #schedule -->
 
 	<section id="info">
-		<p>
-			<?php _e('For reservations and more information, visit ', 'liptovzije') ?>
-			<a href="http://gacinema.sk/" target="_blank">gacinema.sk</a>.
-		</p>
+		<?php the_content(); ?>
 	</section><!-- #info -->
 
 	<h2 class="page-title"><?php _e('Movie List', 'liptovzije') ?></h2>
 	<section id="movie-list">
-
+	<?php get_the_ga_ads(); ?>
 	<?php
-		$day_names = array('Monday',
-											 'Thursday',
-											 'Wednesday',
-											 'Thursday',
-											 'Friday',
-											 'Saturday',
-											 'Sunday');
+		$day_names = array('Mon',
+											 'Tue',
+											 'Wed',
+											 'Thu',
+											 'Fri',
+											 'Sat',
+											 'Sun');
 		$movies = parse_ga_movies();
 
 
 		echo '<ul>';
 		foreach ($movies as $title => $details) {
-			echo '<li id="' . esc_attr($title) . '">';
-			echo '<h3>' . $title . '</h3>';
+			echo '<li id="' . urlencode($title) . '">';
+			echo '<h3>' . movie_title($title) . '</h3>';
 			echo '<div class="movie-schedule"><table><thead><tr>';
 			foreach ($day_names as $day_name) {
 				echo '<th>' . __($day_name) . '</th>';

@@ -3,9 +3,7 @@
 
 	get_header();
 	get_sidebar();
-	if (has_category($cat_photo->cat_ID)) {
-		get_the_ga_ads();
-	}
+	get_ads();
 	//var_dump($post);
 
 ?>

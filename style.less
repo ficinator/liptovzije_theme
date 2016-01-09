@@ -2692,7 +2692,7 @@ input[type=submit] {
 .page,
 .archive,
 .search {
-	margin-bottom: @medium;
+	// margin-bottom: @medium;
 	.page-header {
 		margin: 0 @medium @medium @medium;
 		text-align: center;
@@ -2856,17 +2856,20 @@ input[type=submit] {
 }
 
 #movie-list {
-	& > ul > li {
-		margin-bottom: @medium;
-		background: @white;
-		border: @borderLight;
-		h3 {
-			color: @white;
-			background: @red;
-			padding: @small @medium;
-		}
-	}
-}
+	& > ul {
+		margin-left: @adsLeftWidth + @medium;
+		& > li {
+			margin-bottom: @medium;
+			background: @white;
+			border: @borderLight;
+			h3 {
+				color: @white;
+				background: @dark;
+				padding: @small @medium;
+			}	// h3
+		}	// li
+	}	// ul
+}	// #movie-list
 
 .day-schedule,
 .movie-schedule {
@@ -2958,13 +2961,13 @@ input[type=submit] {
 	}	// table
 }	// .movie-schedule
 
-.ads.left {
-	width: @adsLeftWidth;
-	float: left;
-	margin-left: -@adsLeftWidth;
-}
 
 #ga-ads {
+	width: @adsLeftWidth;
+	float: left;
+	&.left {
+		margin-left: -@adsLeftWidth;
+	}
 	a, object {
 		display: block;
 	}
