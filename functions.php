@@ -32,7 +32,7 @@ endif;
 add_action('after_setup_theme', 'liptovzije_setup');
 
 function liptovzije_scripts() {
-	wp_enqueue_style('roboto', 'http://fonts.googleapis.com/css?family=Roboto:400,300,700,900');
+	// wp_enqueue_style('roboto', 'http://fonts.googleapis.com/css?family=Roboto:400,300,700,900');
 	//wp_enqueue_style('genericons', get_template_directory_uri() . '/genericons/genericons.css');
 	wp_enqueue_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css');
 	wp_enqueue_style('liptovzije-style', get_stylesheet_uri());
@@ -42,7 +42,7 @@ function liptovzije_scripts() {
 	//wp_enqueue_script('sticky-kit-script', get_template_directory_uri() . '/js/sticky-kit.min.js', array('jquery'));
 	wp_enqueue_script('hc-sticky-script', get_template_directory_uri() . '/js/jquery.hc-sticky.min.js', array('jquery'));
 	//wp_enqueue_script('jwplayer-script', 'http://jwpsrv.com/library/eVCHtN1jEeSszA4AfQhyIQ.js');
-	wp_enqueue_script('maps-script', get_template_directory_uri() . '/js/maps.js', array('jquery'));
+	wp_enqueue_script('maps-script', get_template_directory_uri() . '/js/google.js', array('jquery'));
 
 	wp_enqueue_script('enquire-script', get_template_directory_uri() . '/js/enquire.min.js', false, false, true);
 	wp_enqueue_script('liptovzije-script', get_template_directory_uri() . '/js/functions.js', array('jquery'), false, true);
@@ -420,7 +420,7 @@ function the_slider($query, $number = 4) {
 
 function the_photo_of_the_week() {
 	$cat = get_category_by_slug('photo-of-the-week');
-	$args = array( 
+	$args = array(
 		'post_type'	=> 'post',
 		'cat'		=> $cat->cat_ID,
 		'limit'		=> 1
@@ -453,6 +453,7 @@ function the_partners() {
 		'freerideLM'	=> 'http://freeridelm.sk/',
 		'radio-liptov'	=> 'http://www.radioliptov.sk/index.php',
 		'liptov-lasers'	=> 'http://www.liptovlasers.com/sk',
+		'jooble'	=> 'https://sk.jooble.org/pr%C3%A1ca/okres-Liptovsk%C3%BD-Mikul%C3%A1%C5%A1?main',
 	);
 
 	echo '<section class="partners">';
@@ -516,6 +517,18 @@ function get_og_meta() {
 	return $og_meta;
 }
 
+function calendar() {
+	$url = 'http://www.liptovzije.sk/kalendar-liptovzije-2018';
+	$image_url = 'http://www.liptovzije.sk/wp-content/uploads/2017/11/24197108_10210663914329416_275517276_o.png';
+
+	echo '<aside class="widget calendar-2018">';
+	echo '<h3 class="widget-title"><a href="' . $url . '">' . __('Calendar Liptov Žije 2018', 'liptovzije') . '</a></h3>';
+	echo '<p>';
+	echo '<a href="' . $url . '"><img src="' . $image_url . '" alt="' . __('Calendar Liptov Žije 2018', 'liptovzije') . '" style="width:100%"></a>';
+	echo '</p>';
+	echo '</aside>';	// .widget.calendar-2018
+}
+
 function radio_l() {
 	$url = 'http://www.radioliptov.sk/index.php';
 	$stream_url = 'http://95.105.254.157:80/radioliptov';
@@ -526,7 +539,7 @@ function radio_l() {
 	echo '<img src="' . get_template_directory_uri() . '/images/radio_liptov.png" alt="' . __('Radio Liptov', 'liptovzije') . '" />';
 	echo '</a>';
 	echo '<div class="radio-container">';
-	echo '<audio id="radio-l-stream" preload="none">'; 
+	echo '<audio id="radio-l-stream" preload="none">';
 	echo '<source src="' . $stream_url . '">';
 	echo '<p>' . __('Your browser doesn\'t support HTML audio. Sorry.') . '</p>';
 	echo '</audio>';
@@ -551,12 +564,19 @@ function radio_pre_zivot() {
 	echo '<embed type="application/x-shockwave-flash" src="' . $stream_url . '" id="radio-pre-zivot-stream" quality="high" allowfullscreen="false" allowscriptaccess="always" flashvars="file=http://server1.internetoveradio.sk:8824/;stream.nsv&amp;type=mp3&amp;volume=60" width="192px" height="20">';
 	echo '<a href="' . $url . '" target="_blank" class="note">' . __('If the stream doesn\'t work, click here.', 'liptovzije') . '</a>';
 	echo '</div>';		// .radio-container
-	echo '</aside>';	// .widget.radio-liptov-stream	
+	echo '</aside>';	// .widget.radio-liptov-stream
 }
 
-function get_ads() {
-	if (has_category('photo-of-the-week'))
-		get_the_ga_ads('ads left');
+function get_ads($classes = '') {
+	$category = get_the_category()[0]->slug;
+	$photo = 'photo-of-the-week';
+	echo '<div class="ads ' . $classes . '">';
+	if ((is_archive() && has_category($photo)) ||
+	    (is_single() && $category == $photo)) {
+		get_the_ga_ads();
+	}
+	get_the_jooble_ad();
+	echo '</div>';
 }
 
 function parse_ga_movies() {
@@ -662,9 +682,18 @@ function get_the_ga_ads($classes = '') {
 	// echo $doc->saveHTML($node);
 }
 
+function get_the_jooble_ad($classes = '') {
+	$url = 'https://sk.jooble.org/pr%C3%A1ca/okres-Liptovsk%C3%BD-Mikul%C3%A1%C5%A1?main';
+	echo '<div id="jooble-ad" class="' . $classes . '">';
+	echo '<a href="' . $url . '" target="_blank" class="jooble-logo">';
+	echo '<img src="' . get_template_directory_uri() . '/images/logo_Jooble-300x234.jpg" alt="' . __('Jooble', 'liptovzije') . '" />';
+	echo '</a>';
+	echo '</div>';	// #ads-left
+}
+
 function movie_title($title) {
 	$fks_url = '#';
 	return str_replace('FKS', '<a href="' . $fks_url . '">FKS</a>', $title);
 }
-	
-?>	
+
+?>

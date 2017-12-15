@@ -4,6 +4,7 @@
 
 	get_header();
 	get_sidebar();
+	get_ads('left');
 
 	// query
 	$cat_photo = get_category_by_slug('photo-of-the-week');

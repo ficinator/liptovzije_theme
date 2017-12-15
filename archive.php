@@ -1,7 +1,7 @@
 <?php
 	get_header();
 	get_sidebar();
-	get_ads();
+	get_ads('left');
 ?>
 
 <div id="primary" class="archive">

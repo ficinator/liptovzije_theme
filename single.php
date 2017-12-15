@@ -3,7 +3,7 @@
 
 	get_header();
 	get_sidebar();
-	get_ads();
+	get_ads('left');
 	//var_dump($post);
 
 ?>

@@ -15,9 +15,8 @@
 				echo '<meta property="' . $property . '" content="' . $content . '" />';
 			}
 		?>
-	    <script type="text/javascript"
-	        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwLYX2iURWnQMwmGfHDcQ2rqNXfvECQbI&amp;sensor=false">
-	    </script>
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwLYX2iURWnQMwmGfHDcQ2rqNXfvECQbI"></script>
 		<!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
 		<!-- <link rel="shortcut icon" href="<?php echo $favicon; ?>" /> -->
 		<?php wp_head(); ?>

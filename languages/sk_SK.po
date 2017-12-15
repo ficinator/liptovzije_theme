@@ -145,3 +145,6 @@ msgstr "Film"
 
 msgid "Movie List"
 msgstr "Zoznam filmov"
+
+msgid "Calendar Liptov Žije 2018"
+msgstr "Kalendár Liptov Žije 2018"

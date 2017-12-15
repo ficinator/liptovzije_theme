@@ -7,10 +7,11 @@
 		<div id="primary-sidebar">
 
 			<?php
+				calendar();
 				if (!has_category('photo-of-the-week') || is_home())
 					the_photo_of_the_week();
 				radio_l();
-				radio_pre_zivot();
+				# radio_pre_zivot();
 				dynamic_sidebar('sidebar');
 			?>
 
@@ -34,5 +35,5 @@
 		<!-- </div> --><!-- @footer-sidebar -->
 
 	</div><!-- #sidebar -->
-	
+
 <?php endif; ?>
